@@ -1,37 +1,28 @@
-#include<iostream>
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-double GetPriceQualityRatio(int price,int quality){
-    return price/quality; 
-}
-
 int main(){
-    int n;
-    cin >> n;
-    double qual[n];
-    string str[n];
+    int n; cin >> n;
+    vector<pair<string,double> > v(n);
+    int i = 0;
+    vector<double> w(n);
+    double k,l;
+}
     for(int i = 0; i < n;i++){
-        cin >> str[i];
-        int price;
-        cin >> price;
-        int quality;
-        cin >> quality;
-        qual[i] = GetPriceQualityRatio(price, quality);
+        string s; cin >> s;
+        cin >> k >> l;
+         v[i] = make_pair(s,l/k);
+         w[i] = l/k;
     }
-    int min = qual[0];
-    for(int i = 1; i < n;i++){
-        if(min > qual[i]){
-            min = qual[i];
-        }
-    }
-    for(int i = 0;i < n;i++){
-        if(min == qual[i]){
-            cout << str[i];
+    sort(w.begin(),w.end());
+    for(int j = 0; j < n; j++){
+        if(v[j].second == w[n - 1]){
+            cout << v[j].first;
             break;
         }
     }
-    
 
-    return 0;
 }
