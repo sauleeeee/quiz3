@@ -1,31 +1,42 @@
- 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <algorithm>
 using namespace std;
 
-int lenoflongestnonpalindrome(string s)
-{
-    int max1 = 1, len = 0;
- 
-    for (int i = 0; i < s.length() - 1; i++) {
-        if (s[i] == s[i + 1])
-            len = 0;
-
-        else if (s[i + 1] == s[i - 1] && i > 0)
-            len = 1;
-        else 
-            len++;
-        max1 = max(max1, len + 1);
+int main(){
+    string s;
+    cin >> s;
+    string l;
+    l = s;
+    int cnt = 0;
+    reverse (s.begin(),s.end());
+    for(int i = s.size() - 1; i >= 0;--i){
+        if (s[i] == l[i]){
+            cnt++;
+        }
     }
-
-    if (max1 == 1)
-        return 0;
-    else
-        return max1;
-}
-
-int main()
-{
-    string s = "synapse";
-    cout << lenoflongestnonpalindrome(s) << "\n";
-    return 0;
-}
+    int j = 1;
+    int h = cnt;
+    string d,p;
+    if (cnt == s.size()){
+        while(h != 0){
+            for (int i = 0; i < s.size() -  j;i++ ){
+                d = d + s[i];
+            }
+            p = d;
+            reverse(d.begin(),d.end());
+            if (p == d){
+                j++;
+                d.clear();
+            }
+            h--;
+            if (p != d){
+                h = 0;
+            }
+        }
+        cout << d.size();
+    }
+    else {
+        cout << s.size();
+    }
+ }
